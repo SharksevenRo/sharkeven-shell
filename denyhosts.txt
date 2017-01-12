@@ -4,7 +4,7 @@ SECURE_LOG = /var/log/secure
 HOSTS_DENY = /etc/hosts.deny
 #将阻止IP写入到hosts.deny
 
-PURGE_DENY = 5m
+PURGE_DENY =
 #过多久后清除已经禁止的，其中w代表周，d代表天，h代表小时，s代表秒，m代表分钟
 
 BLOCK_SERVICE = sshd
