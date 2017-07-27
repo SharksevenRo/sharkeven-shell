@@ -6,13 +6,14 @@ if [ ! -n $1 ]; then
 fi
 git status
 git diff
-
-str = `git remote -v | awk '{print $2}' | head -1 | awk '/^*github.com*/ {print $1}'`
-if [ ! -n "${str}" ]
+str=$(git remote -v | awk '{print $2}' | head -1 | awk '/^*github.com*/ {print $1}')
+if [ ! -z "${str}" ]
 then
+    echo 'github'
     git config --global user.name "SharksevenRo"
     git config --global user.email "937257166@qq.com"
 else
+    echo 'huanleguang'
     git config --global user.name "xiongmao"
     git config --global user.email "xiongmao@huanleguang.com"
 fi
