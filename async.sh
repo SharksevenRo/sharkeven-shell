@@ -1,13 +1,14 @@
 #!/bin/bash
 # git 同步脚本 1 自动跟踪分支提交 2 一键git status git diff 3 自动获取远程库配置 修改用户配置 4 回滚 git add 功能
-if [ ! -n $1 ]; then
+branch=$(git branch)
+if [ ! -n $branch ]; then
 
-    git branch --set-upstream-to=origin/$1
+    git branch --set-upstream-to=origin/$branch
     git branch --unset-upstream master
 fi
 git status
 git diff
-str=$(git remote -v | awk '{print $2}' | head -1 | awk '/^*github.com*/ {print $1}')
+str=$(git remote -v | awk '{print $2}' | head -1 | awk '/^*github.com*/ {print $branch}')
 if [ ! -z "${str}" ]
 then
     echo 'github'
@@ -25,11 +26,11 @@ read msg
 
 if [ ! -z "${msg}" ]
 then
-    git pull origin $1
+    git pull origin $branch
 
     git add .
     git commit -a -m "$msg"
-    git push -u origin $1
+    git push -u origin $branch
 else
         # 撤销提交
         git reset HEAD .
