@@ -1,4 +1,5 @@
 #!/bin/bash
+# git 同步脚本 1 自动跟踪分支提交 2 一键git status git diff 3 自动获取远程库配置 修改用户配置 4 回滚 git add 功能
 if [ ! -n $1 ]; then
 
     git branch --set-upstream-to=origin/$1
