@@ -1,6 +1,11 @@
 #!/bin/bash
 # git 同步脚本 1 自动跟踪分支提交 2 一键git status git diff 3 自动获取远程库配置 修改用户配置 4 回滚 git add 功能
-branch=$(git branch | head -1 | awk '{print $1}')
+branch=$(git branch | head -1 | awk '{print $2}')
+if [ ! -n $branch ]; then
+
+    git branch --set-upstream-to=origin/$branch
+    git branch --unset-upstream master
+fi
 git status
 git diff
 str=$(git remote -v | awk '{print $2}' | head -1 | awk '/^*github.com*/ {print $1}')
