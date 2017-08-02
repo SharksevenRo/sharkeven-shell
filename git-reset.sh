@@ -18,7 +18,7 @@ else
     echo "example: gset branch commitID"
     exit 0
 fi
-isExit=$(git branch -a | grep remotes/origin/$1)
+isExit=$(git branch -a | grep $1)
 # 判断远程仓库是否存在
 if [ ! -z "$isExit" ]
 then
