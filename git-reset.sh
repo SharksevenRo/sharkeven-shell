@@ -47,6 +47,7 @@ git checkout $1
 # 在备份上回滚到某个提交
 git reset --hard $2
 # 删除目标分支
+git checkout master
 git branch -D $1
 # 删除远程仓库目标分支
 git push origin :$1
