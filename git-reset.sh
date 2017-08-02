@@ -49,6 +49,7 @@ git reset --hard $2
 # 删除目标分支
 git checkout master
 git branch -D $1
+git checkout -b $1_$round
 # 删除远程仓库目标分支
 git push origin :$1
 # 在回滚后的备份分支上check以目标分支名新建新分支
