@@ -38,6 +38,7 @@ then
     round=$RANDOM
 else
     # checkout 一个备份分支
+    echo "checkout -b $1_$round"
     git checkout -b $1_$round
 fi
 # 切换到目标分支
