@@ -52,22 +52,3 @@ git branch -D $1
 git push origin :$1
 # 在回滚后的备份分支上check以目标分支名新建新分支
 git checkout -b $1
-
-git branch --set-upstream-to=origin/$1
-
-git branch --unset-upstream master
-
-# 删除备份分支
-git branch -D $1_$round
-read msg
-
-if [ ! -z "${msg}" ]
-then
-    git pull origin $branch
-
-    git add .
-    git commit -a -m "$msg"
-    git push -u origin $branch
-else
-
-fi
